@@ -1,0 +1,28 @@
+#Chapter 3 Learn To Program
+
+
+
+
+puts 'Hello World!'
+puts ''
+puts 'Good-bye.'
+
+#3.1
+
+puts 'I like' + 'apple pie.'
+puts 'I like ' + 'apple pie.'
+puts 'I like' + ' apple pie'
+
+#3.2
+
+puts  12 + 12
+puts '12' + '12'
+puts '12 + 12'
+puts '2 * 5'
+
+#3.3
+
+puts 'You\'re swell!'
+puts 'backlash at the end of a string: \\'
+puts 'up\\down'
+puts 'up\down'
