@@ -1,0 +1,58 @@
+#Chapter 6 Learn To Program
+
+#6.1
+
+puts "What\'s your first name?"
+first = gets.chomp
+puts "What\'s your middle name?"
+middle = gets.chomp
+puts "What\'s your last name?"
+last = gets.chomp
+puts "So, your full name is #{first} #{middle} #{last}."  
+name = "#{first} #{middle} #{last}."
+puts "Did you know that there are + #{name.length.to_s} + characters "
+puts "in your name ?"
+
+#6.2
+
+puts "What do you want you good for nothing employee?"
+input = gets.chomp
+puts "What do you mean #{input}?  You're fired!"
+
+line_width = 40
+
+c = "Table of Contents"
+
+c1 = "Chapter 1 Getting Started"
+
+c2 = "Chapter 2 Numbers"
+
+c3 = "Chapter 3 Letters"
+
+p1 = "page 1"
+
+p2 = "page 9"
+
+p3 = "page 13"
+
+puts (c.center (line_width))
+puts (p1.rjust (line_width))
+puts (c1.center (line_width))
+puts (p2.rjust (line_width))
+puts (c2.center (line_width))
+puts (p3.rjust (line_width))
+puts (c3.center (line_width))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
