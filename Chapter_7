@@ -1,0 +1,57 @@
+#Chapter 7 Learn To Program
+
+#7.5
+
+bottles_of_beer = 99
+while bottles_of_beer > 1
+  puts bottles_of_beer.to_s + ' bottles of beer on the wall, ' +
+  bottles_of_beer.to_s + ' bottles of beer'
+  bottles_of_beer = bottles_of_beer - 1
+  puts 'You take one down, pass it around, ' + bottles_of_beer.to_s + '
+  bottles of beer on the wall.'
+  puts ''
+end
+
+#Grandma is deaf!
+
+puts "Hello grandbaby, you are my favorite"
+
+response = gets.chomp
+bye = 0
+
+while bye < 1
+   if response != response.upcase
+     puts "I CAN NOT HEAR YOU!  Please enunciate."
+   end
+
+   if (response == response.upcase and response != "BYE")
+     puts "NO! NOT SINCE " + (1930+rand(21)).to_s + "!"
+   end
+
+   if response == "BYE"
+     puts "GOOD BYE, SONNY!"
+   bye = (bye+1)
+   end
+
+response = gets.chomp
+end
+
+#Leap Year ....having issues with this one.
+
+
+puts "Pick a starting year."
+starting = gets.chomp.to_i
+puts "Now, pick an ending year."
+ending = gets.chomp.to_i
+puts "Check it out.  These are leap years:"
+
+(starting..ending).each do |year|  
+
+	next if year % 4   != 0   
+	next if year % 100 == 0 && 
+	year % 400 != 0   
+
+	puts year
+
+end 
+
