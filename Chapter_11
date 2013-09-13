@@ -1,0 +1,231 @@
+#chapter11.rb
+
+def english_number
+    english_number
+  if number < 0 # 
+    negative
+    numbers
+  return 'Please enter a number that isn\'t negative.'
+end
+if number == 0
+  return 'zero'
+end
+num_string = ''
+
+one_place = [ 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+
+tens_place = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+
+teenagers = [ 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen' ]
+
+zillions = [['hundred', 2], 
+            ['thousand', 3], 
+            ['million', 6], 
+            ['billion', 9], 
+            ['trillion', 12],
+            ['quadrillion', 15], 
+            ['quintillion', 18], 
+            ['sextillion', 21], 
+            ['septillion', 24],
+            ['octillion', '27'], 
+            ['no-nillion', 30], 
+            ['decillion', 33], 
+            ['undecillion', 36]
+            ['duodecillion', 39],
+            ['tredecillion', 42], 
+            ['quattuordecillion', 45], 
+            ['sexdecillion', 51],
+            ['septendecillion', 54], 
+            ['octodecillion', 57], 
+            ['novemdecillion', 60], 
+            ['vigintillion', 63], 
+            ['googol', 100]]
+
+              left = number
+              while zillions.length
+                > 0
+                zil_pair =
+                zillions.pop
+                zil_name [0]
+                zil_base = 10 **
+                zil_pair [1]
+                write = left/zil_base
+                left = left - write*zil_base
+                if write > 0
+                  num_string =
+                  num_string +
+                  prefix + '' +
+                  zil_name
+                  if left > 0
+                    num_string =
+                    num_string + ''
+                  end
+                end
+              end
+
+              write =
+                left/10
+                left = left -
+                write * 10
+
+                if write > 0
+                  if ((write == 1) and (left > 0 ))
+
+                    num_string + teenagers [left-1]
+                    left = 0
+                  else
+                    num_string =
+                    num_string + tens_place [write-1]
+                    if left > 0
+                    end
+                  end
+                  write = left 
+                  left = 0
+                  if write >0
+                    num_string = num_string + ones_place [write 1]
+                  end
+                  num_string
+                end
+                puts english_number (0)
+                puts english_number (9)
+                puts english_number (10)
+                puts english_number (11)
+                puts english_number (17)
+                puts english_number (32)
+                puts english_number (88)
+                puts english_number (99)
+                puts english_number (100)
+                puts english_number (101)
+                puts english_number (234)
+                puts english_number (3211)
+                puts english_number (999999)
+                puts english_number (1000000000000)
+                puts english_number (109238745102938560129834709285360238475982374561034)
+
+#99 Bottles of Beer.
+# english_number as above, plus this:
+
+num_at_start = 5
+num_bot = proc { |n| "#{english_number n} bottle #{n == 1 ? '' : 's'}" } 
+ num_at_start.downto(2) do |num|   
+puts "#{num_bot[num]} of beer on the wall, #{num_bot[num]} of beer!".capitalize  
+puts "Take one down, pass it around, #{num_bot[num-1]} of beer on the wall!" 
+end 
+puts "#{num_bot[1]} of beer on the wall, #{num_bot[1]} of beer!".capitalize
+puts "Take one down, pass it around, #{num_bot [1]} more bottles of beer on the wall!" 
+
+#Download Pictures From Camera. 
+
+require 'win32ole'
+STDOUT.sync = true
+Thread.abort_on_exception = true
+Dir.chdir 'C:\Documents and Settings\chris\Desktop\picturesinbox'
+pic_names = Dir ['undated/**/*.{jpg, avi]}']
+thm_names = Dir [ '/undated/**/*.{thm}']
+WIN32OLE.new ("Scripting.FilesystemObject").Drives.each() do |x|
+  if x.DriveType == 1 && x.IsReady
+    pic_names += Dir[.DriveLetter+' :/**/*.{jpg,avi}']
+    thm_names += Dir [x.DriveLetter+' :/**/*.{thm}']
+  end
+end
+months = %w(jan feb mar apr may jun jul aug sep oct nov dec)
+encountered_error = false
+print "Downloading e} files:"
+pic_names.each do |name|
+  print '.'
+  is_movie = (name [3..-1].downcase == 'avi')
+  if is_movie
+    orientation = 0
+    new_name = File.open (name) do |f|
+      f.seek (0x144, IO: SEEK_SET) f.read (20)
+    end
+    new_name [0...3] = '%.2d' % (1 + months.index (new_name[0...3].downcase))
+    new_name = new_name [-4...-1] + '' + new_name [0...-5]
+  else
+    new_name, orientation = File.open (name)
+    do |f|
+      f.seek (0x36, IO: : SEEK_SET) orientation_ = f.read (1) (0) f.seek (0xbbc, IO: :SEEK_SET)
+      new_name = f.read (19) [new_name_, orientation]
+    end
+  end
+  [4,7,10,13,16].each {|n| new_name [n] = '.'}
+  if new_name [0] !=
+    '2' [0]
+    encountered_error = true
+    puts "\n" + 'ERROR: Could not process"' +name+ '"because it\'s not in the proper format!'
+    next
+  end
+  Save+name = new_name
+  + (is_movie? .orig.avi' : '.jpg')
+
+  while FileTest.exist?
+  save_name
+  new_name += 'a'
+  save_name = new_name + (is_movie? 'orig.avi' :'.jpg')
+end
+case orientation 
+when 6
+  'convert "#{name}" -rotate "90>" "#{save_name}"` File.delete name 
+when 8
+  'convert "#{name}" rotate "-90" "#{save_name"`File.delete name 
+else
+  File.rename name,
+  save_name
+end
+end
+ print "\nDeleting #{thm_names.size} THM files:"
+ thm_names.each do |name|
+  print '.'
+end
+if encountered_error 
+  puts 
+  puts "Press [Enter} to finish."
+  puts
+  gets
+end 
+
+#Build Your Own Playlist
+
+all_oggs = shuffle (Dir ['**/*.ogg'])
+
+File.open
+  'playlist.m32'
+  'w' do |f|
+  all_oggs.each do |ogg|
+    f.write ogg+ "\n"
+  end 
+end
+puts "Done!"
+
+#Build A Better Playlist
+
+def music_shuffle
+    filenames = filenames.sort
+    len = filenames.length
+    2.times do 
+      1_idx = 0
+      r_idx = lens/2 
+      shuf = []
+      while shuf.length < len
+        if shuf.length%2 == 0
+          shuf.push (filenames [r_idx])
+          1
+        else
+    shuf.push (filenames [1_idx])
+    1_idx = 1_idx + 1
+  end
+end
+filenames = shuf
+end
+arr = []
+cut = rand (len)
+idx = 0
+while idx < lenarr.push (filenames [(idx + cut) % len])
+  idx = idx + 1
+end 
+arr
+end
+songs = [ 'aa/bbb', 'aa/ccc', 'aa/ddd', 'AAA/xxx', 'AAA/yyyy', 'AAA/yyyy', 'AAA/zzzz', 'foo/bar' ]
+puts shuffle (music_shuffle(songs))
+
+
