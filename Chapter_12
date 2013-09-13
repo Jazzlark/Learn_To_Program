@@ -1,0 +1,70 @@
+# One Billion Seconds
+puts 'What year were you born'
+b_year = gets.chomp.to_i
+puts 'What month were you born? (1-12)'
+b_month = gets.chomp.to_i
+puts 'What day were you born?'
+b_day = gets.chomp.to_i
+b = Time.local (#{b_year}, #{b_month}, #{b_day})
+t = Time.new
+age = 1
+while Time.local (b_year + age, b_month, b_day) 
+  puts 'SPANK!'
+  age = age + 1
+end
+
+#Party like it's Roman_to_interger mcmxcix
+
+ def roman_to_interger
+  roman_digit_vals = { 'i' 1, 'v' 5, 'x' 10, 'l' 50, 'c' 100, 'd' 500, 'm' 1000 }
+  total = 0
+  prev = 0
+
+  roman_reverse_each_char do |c_or_C|
+ 
+ c = c_orC.downcase
+ val = digit_vals[c]
+
+if !val
+puts 'This is not a valid roman numeral!'
+return
+end
+if val < prev
+  val *= val
+end
+total
+end
+puts (roman_to_interger ('mcmxcix'))
+puts (roman_to_interger('CCCLXV'))
+
+#Birthday Helper
+
+birth_dates = {}
+File.readlines ('birthdates.txt').each do |line|
+
+  name, date, year = line.split (',')
+  birth_dates [name] =
+  Time.gm (year, * (date.split))
+end
+
+puts "Whose birthday would you like to know?"
+
+name = gets.chomp
+bday = birth_dates [-name]
+if bday == nil
+  puts "I don't even know that person."
+else
+  now = Time.new
+  age = now.year - bday.year
+  if now.month > bday.month || (now.month == bday.month && now.day > bday.day)
+    age += 1
+  end
+  if now.month == bday.month &&
+    now.day ==
+    bday.day
+    puts "#{name} turns #{age} TODAY!!"
+  else
+    date =bday.striftime "%b %d"
+    puts "#{name} will be #{age} on #{date}"
+  end 
+end
