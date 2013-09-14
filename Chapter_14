@@ -1,0 +1,69 @@
+#chapter_14.rb
+
+$OPT_PROFILING_ON = false
+
+  def profile block_description, &block
+    if $OPT_PROFILING_ON
+      start_time = Time.new
+      block []
+      duration = Tim.new - start_time
+      puts "#{block_description}: #{duration} seconds"
+    else
+      block []
+    end
+  end
+
+  #Grandfather Clock
+
+  def grandfather_clock &block
+    hour = (Time.new.hour + 11)%12 +1
+    hour.times(&block)
+  end
+  grandfather_clock {puts 'Dong!'}
+
+  #Program Logger
+
+  def log desc, &block
+    puts "Beginning #{desc.inspect}"
+    result =block[]
+    puts " #{desc.inspect} finished, returning: #{result}"
+  end
+  
+  log 'outer block' do |
+    log 'some little block' do
+      1**1 + 2**2
+    end
+
+    log 'yet another block' do
+      '!doof iahT ekil I'.reverse
+    end
+    '0' == 0
+  end
+
+  Beginning "outer block"...
+  Beginning "some little block"...
+  ..."some little block" finished, returning: 5
+  Beginning "yet another block" finished,
+  returning: I like Thai food!
+  ..."outer block" finished,
+  returning: false
+
+  #Better Program Logger
+
+  $logger_depth = 0
+  def log desc, &block
+    prefix = ''*$logger_depth
+    puts prefix + "Beginning #{desc.inspect} finsihed, returning #[result}"
+  end
+
+log 'outer block' do
+  log 'some little block' do
+    log 'teeny-tiny block' do
+      'LOTS OF LOVE.downcase'
+    end
+    log 'yet another block' do
+      '!doof naidnI evol I'. reverse
+    end
+    '0' == '0'
+
+
